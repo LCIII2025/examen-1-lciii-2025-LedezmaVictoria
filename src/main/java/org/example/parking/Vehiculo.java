@@ -14,5 +14,23 @@ public class Vehiculo {
     private final String modelo;
     private final Tipo tipo;
 
+    public Vehiculo(String patente, String modelo, Tipo tipo) {
+        this.patente = patente;
+        this.modelo = modelo;
+        this.tipo = tipo;
+    }
+
+    public String getPatente() {
+        return patente;
+    }
+
+    public String getModelo() {
+        return modelo;
+    }
+
+    public Tipo getTipo() {
+        return tipo;
+    }
+
 
 }

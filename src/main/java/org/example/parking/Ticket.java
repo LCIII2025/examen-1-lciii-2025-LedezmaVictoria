@@ -23,7 +23,7 @@ public class Ticket {
 
     public void marcarSalida() {
         Random random = new Random();
-        this.horaSalida = LocalDateTime.now().plusMinutes(random.nextInt(200)+1);
+        this.horaSalida = horaEntrada.plusMinutes(random.nextInt(200) + 1);
     }
 
     public long calcularMinutos() {
@@ -31,13 +31,16 @@ public class Ticket {
     }
 
     public double calcularPrecio() {
-        // TODO implementar el metodo para calcular el importe a abonar segun el tipo de vehiculo
-        // AUTO -> 100, SUV -> 130, PICKUP -> 180
-        // el importe es por hora redondeando el tiempo hacia arriba,
-        // por ejemplo si estuvo 45 minutos se le tarifa por 60, si estuvo 80 minutos se le tarifa por 120 minutos, etc...
-        // retornar el importe final
+        long minutos = calcularMinutos();
+        double horas = Math.ceil(minutos / 60.0);
+        double tarifaPorHora = switch (vehiculo.getTipo()) {
+            case AUTO -> 100;
+            case SUV -> 130;
+            case PICKUP -> 180;
+        };
+        return horas * tarifaPorHora;
 
-        return 0;
+
     }
 
 }
